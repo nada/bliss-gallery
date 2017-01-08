@@ -1,0 +1,23 @@
+{
+  "name": "bliss-gallery",
+  "version": "0.1.0",
+  "description": "Simple gallery built using Bliss",
+  "main": "gallery.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/matthiask/bliss-gallery.git"
+  },
+  "author": "Matthias Kestenholz @matthiask",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/matthiask/bliss-gallery/issues"
+  },
+  "homepage": "https://github.com/matthiask/bliss-gallery#readme",
+  "dependencies": {
+    "blissfuljs": "^1.0.2",
+    "swipedetector": "^1.0.0"
+  }
+}
