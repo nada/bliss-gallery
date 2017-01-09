@@ -11,11 +11,13 @@ exports.modulo = modulo;
 exports.clamp = clamp;
 exports.applyTransform = applyTransform;
 
-var _blissfuljs = require('blissfuljs');
-
 var _swipedetector = require('swipedetector');
 
+require('blissfuljs');
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var $ = window.Bliss;
 
 function modulo(p, q) {
   // A modulo function which actually returns a value with the sign of the
@@ -39,9 +41,9 @@ var Gallery = exports.Gallery = function () {
     _classCallCheck(this, Gallery);
 
     this.element = element;
-    this.slider = (0, _blissfuljs.$)('[data-slider]', this.element);
-    this.slides = (0, _blissfuljs.$$)('[data-slide]', this.element);
-    this.thumbs = (0, _blissfuljs.$$)('[data-thumb]', this.element);
+    this.slider = $('[data-slider]', this.element);
+    this.slides = $.$('[data-slide]', this.element);
+    this.thumbs = $.$('[data-thumb]', this.element);
     this._current = null;
     this._interval = null;
 
@@ -57,7 +59,7 @@ var Gallery = exports.Gallery = function () {
     });
 
     // add 'click' to left and right arrow
-    (0, _blissfuljs.$$)('[data-go]', this.element)._.addEventListener('click', function (e) {
+    $.$('[data-go]', this.element)._.addEventListener('click', function (e) {
       e.preventDefault();
       _this.autoPlay(false);
       _this.reveal(_this._current + parseInt(e.currentTarget.dataset.go, 10));
