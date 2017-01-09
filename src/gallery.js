@@ -1,5 +1,6 @@
-import {$, $$} from 'blissfuljs';
 import {SwipeDetector} from 'swipedetector';
+import 'blissfuljs';
+const $ = window.Bliss;
 
 export function modulo(p, q) {
   // A modulo function which actually returns a value with the sign of the
@@ -25,8 +26,8 @@ export class Gallery {
   constructor(element) {
     this.element = element;
     this.slider = $('[data-slider]', this.element);
-    this.slides = $$('[data-slide]', this.element);
-    this.thumbs = $$('[data-thumb]', this.element);
+    this.slides = $.$('[data-slide]', this.element);
+    this.thumbs = $.$('[data-thumb]', this.element);
     this._current = null;
     this._interval = null;
 
@@ -42,7 +43,7 @@ export class Gallery {
     });
 
     // add 'click' to left and right arrow
-    $$('[data-go]', this.element)._.addEventListener('click', (e) => {
+    $.$('[data-go]', this.element)._.addEventListener('click', (e) => {
       e.preventDefault();
       this.autoPlay(false);
       this.reveal(this._current + parseInt(e.currentTarget.dataset.go, 10));
