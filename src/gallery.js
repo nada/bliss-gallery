@@ -23,11 +23,17 @@ export function applyTransform(element, transform) {
 }
 
 export class Gallery {
-  constructor(element) {
+  constructor(element, options) {
     this.element = element;
     this.slider = $('[data-slider]', this.element);
     this.slides = $.$('[data-slide]', this.element);
     this.thumbs = $.$('[data-thumb]', this.element);
+
+    this.options = $.extend({
+      interval: 5000,
+      autoPlay: false,
+    }, options);
+
     this._current = null;
     this._interval = null;
 
@@ -63,6 +69,10 @@ export class Gallery {
       this._setWidthsAndPositions();
       this.reveal(this._current);
     });
+
+    if(this.options.autoPlay) {
+      this.autoPlay(true);
+    }
   }
 
   move(direction) {
@@ -75,13 +85,14 @@ export class Gallery {
       if (!this._interval) {
         this._interval = setInterval(
           () => this.reveal(this._current + 1),
-          5000);
+          this.options.interval);
       }
     } else if(this._interval) {
       clearInterval(this._interval);
       this._interval = null;
     }
   }
+
 
   reveal(index) {
     this.thumbs[this._current] && this.thumbs[this._current].removeAttribute('data-current');

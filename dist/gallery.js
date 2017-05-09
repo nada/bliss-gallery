@@ -35,7 +35,7 @@ function applyTransform(element, transform) {
 }
 
 var Gallery = exports.Gallery = function () {
-  function Gallery(element) {
+  function Gallery(element, options) {
     var _this = this;
 
     _classCallCheck(this, Gallery);
@@ -44,6 +44,12 @@ var Gallery = exports.Gallery = function () {
     this.slider = $('[data-slider]', this.element);
     this.slides = $.$('[data-slide]', this.element);
     this.thumbs = $.$('[data-thumb]', this.element);
+
+    this.options = $.extend({
+      interval: 5000,
+      autoPlay: false
+    }, options);
+
     this._current = null;
     this._interval = null;
 
@@ -79,6 +85,10 @@ var Gallery = exports.Gallery = function () {
       _this._setWidthsAndPositions();
       _this.reveal(_this._current);
     });
+
+    if (this.options.autoPlay) {
+      this.autoPlay(true);
+    }
   }
 
   _createClass(Gallery, [{
@@ -96,7 +106,7 @@ var Gallery = exports.Gallery = function () {
         if (!this._interval) {
           this._interval = setInterval(function () {
             return _this2.reveal(_this2._current + 1);
-          }, 5000);
+          }, this.options.interval);
         }
       } else if (this._interval) {
         clearInterval(this._interval);
