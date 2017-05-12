@@ -41,6 +41,8 @@ export class Gallery {
 
     this._setWidthsAndPositions();
 
+    this.element.dataset.hideControls = (this.slides.length <= 1);
+
     this.options.createThumbs && this._createThumbs();
 
     this.thumbs = $.$('[data-thumb]', this.element);
