@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/matthiask/bliss-gallery.git"
+    "url": "git+ssh://git@github.com/feinheit/bliss-gallery.git"
   },
-  "author": "Matthias Kestenholz @matthiask",
+  "author": "Matthias Kestenholz @matthiask, Nico Bernold @nico1000",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/matthiask/bliss-gallery/issues"
+    "url": "https://github.com/feinheit/bliss-gallery/issues"
   },
-  "homepage": "https://github.com/matthiask/bliss-gallery#readme",
+  "homepage": "https://github.com/feinheit/bliss-gallery#readme",
   "dependencies": {
     "blissfuljs": "^1.0.2",
     "swipedetector": "^1.0.0"
