@@ -5,6 +5,12 @@ Change log
 `Next version`_
 ===============
 
+`0.2.2`_ (2017-10-10)
+====================
+
+- now using shy bliss to not litter $ in the global workspace
+
+
 `0.2.1`_ (2017-05-12)
 ====================
 
@@ -26,4 +32,5 @@ Change log
 .. _0.1.2: https://github.com/feinheit/bliss-gallery/commit/d466d83332766ce871f8ea8079f70783a6c30041
 .. _0.2: https://github.com/feinheit/bliss-gallery/compare/v0.1.2...v0.2.0
 .. _0.2.1: https://github.com/feinheit/bliss-gallery/compare/v0.2.0...v0.2.1
-.. _Next version: https://github.com/feinheit/bliss-gallery/compare/v0.2.0...master
+.. _0.2.2: https://github.com/feinheit/bliss-gallery/compare/v0.2.1...v0.2.2
+.. _Next version: https://github.com/feinheit/bliss-gallery/compare/v0.2.2...master
