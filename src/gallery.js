@@ -1,5 +1,5 @@
 import {SwipeDetector} from 'swipedetector';
-import 'blissfuljs';
+import 'blissfuljs/bliss.shy.min.js';
 const $ = window.Bliss;
 
 export function modulo(p, q) {
@@ -105,11 +105,13 @@ export class Gallery {
     });
 
     // add 'click' to left and right arrow
-    $.$('[data-go]', this.element)._.addEventListener('click', (e) => {
-      e.preventDefault();
-      this.autoPlay = false;
-      this.reveal(this._current + parseInt(e.currentTarget.dataset.go, 10));
-    });
+    $.$('[data-go]', this.element).forEach(el => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.autoPlay = false;
+        this.reveal(this._current + parseInt(e.currentTarget.dataset.go, 10));
+      });
+    })
 
     this.playPause && this.playPause.addEventListener('click', (e) => {
       e.preventDefault();

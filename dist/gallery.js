@@ -13,7 +13,7 @@ exports.applyTransform = applyTransform;
 
 var _swipedetector = require('swipedetector');
 
-require('blissfuljs');
+require('blissfuljs/bliss.shy.min.js');
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -107,10 +107,12 @@ var Gallery = exports.Gallery = function () {
       });
 
       // add 'click' to left and right arrow
-      $.$('[data-go]', this.element)._.addEventListener('click', function (e) {
-        e.preventDefault();
-        _this2.autoPlay = false;
-        _this2.reveal(_this2._current + parseInt(e.currentTarget.dataset.go, 10));
+      $.$('[data-go]', this.element).forEach(function (el) {
+        el.addEventListener('click', function (e) {
+          e.preventDefault();
+          _this2.autoPlay = false;
+          _this2.reveal(_this2._current + parseInt(e.currentTarget.dataset.go, 10));
+        });
       });
 
       this.playPause && this.playPause.addEventListener('click', function (e) {
