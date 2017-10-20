@@ -1,6 +1,4 @@
 import {SwipeDetector} from 'swipedetector';
-import 'blissfuljs/bliss.shy.min.js';
-const $ = window.Bliss;
 
 export function modulo(p, q) {
   // A modulo function which actually returns a value with the sign of the
@@ -25,16 +23,19 @@ export function applyTransform(element, transform) {
 export class Gallery {
   constructor(element, options) {
     this.element = element;
-    this.slider = $('[data-slider]', this.element);
-    this.slides = $.$('[data-slide]', this.element);
-    this.thumbsContainer = $('[data-thumbs]', this.element);
-    this.playPause = $('[data-playpause]', this.element);
+    this.slider = this.element.querySelector('[data-slider]');
+    this.slides = Array.from(this.element.querySelectorAll('[data-slide]'));
+    this.thumbsContainer = this.element.querySelector('[data-thumbs]');
+    this.playPause = this.element.querySelector('[data-playpause]');
 
-    this.options = $.extend({
-      interval: 5000,
-      autoPlay: true,
-      createThumbs: true,
-    }, options);
+    this.options = Object.assign(
+      {
+        interval: 5000,
+        autoPlay: true,
+        createThumbs: true,
+      },
+      options
+    );
 
     this._current = null;
     this._interval = null;
@@ -45,7 +46,7 @@ export class Gallery {
 
     this.options.createThumbs && this._createThumbs();
 
-    this.thumbs = $.$('[data-thumb]', this.element);
+    this.thumbs = Array.from(this.element.querySelectorAll('[data-thumb]'));
 
     this._setEventListeners();
 
@@ -105,7 +106,7 @@ export class Gallery {
     });
 
     // add 'click' to left and right arrow
-    $.$('[data-go]', this.element).forEach(el => {
+    Array.from(this.element.querySelectorAll('[data-go]')).forEach(el => {
       el.addEventListener('click', (e) => {
         e.preventDefault();
         this.autoPlay = false;
@@ -138,11 +139,10 @@ export class Gallery {
     if (this.thumbsContainer) {
       if (this.slides.length > 1) {
         this.slides.forEach(() => {
-          this.thumbsContainer.appendChild($.create({
-            tag: 'a',
-            href: '',
-            'data-thumb': '',
-          }));
+          let a = document.createElement('a');
+          a.setAttribute('href', '');
+          a.setAttribute('data-thumb', '');
+          this.thumbsContainer.appendChild(a);
         });
       }
     } else {
